@@ -28,3 +28,4 @@ urlpatterns = [
     # we give the url and then the include goes to the playground folder for the app so we no longer require the playground/hello in urls.py in playground
     # U can also give playground or u can include everything
 ]
+# this is the first line that is going to be changed in the github through vscode
