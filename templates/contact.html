@@ -1,2 +1,23 @@
 {% extends "base.html" %}
-{% block body %}This is the contact page of the web{% endblock body %}
+{% block body %}
+<div class='container'>
+    <div style='max-width: 500px;'>
+        <form>
+            <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" name='email' aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+            <label for="password" name='password' class="form-label">Password</label>
+            <input type="password" class="form-control" id="password">
+            </div>
+            <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="check">
+            <label class="form-check-label" for="check">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock body %}
