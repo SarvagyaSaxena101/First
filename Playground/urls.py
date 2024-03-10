@@ -10,5 +10,6 @@ urlpatterns = [
     path('services/', views.services),
     path('contact/',views.contact),
     path('home/',views.home),
-    path('index/',views.index)
+    path('index/',views.index),
+    path('submit_contact/', views.submit_contact, name='submit_contact')
 ]
