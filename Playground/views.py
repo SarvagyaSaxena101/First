@@ -29,10 +29,12 @@ def services(request):
 def contact(request):
     return render(request,'contact.html')
 
-def submit_contact(request):
+def submit_view(request):
     if request.method == 'POST':
+        name = request.POST.get('name')
         email = request.POST.get('email')
-        password = request.POST.get('password')
+        phone = request.POST.get('phone')
+        desc = request.POST.get('desc')
         remember_me = request.POST.get('remember_me')
 
         # Add your logic here to handle the form data (e.g., save to database, send emails, etc.)
