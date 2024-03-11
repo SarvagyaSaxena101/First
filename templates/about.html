@@ -25,6 +25,26 @@
     color: #007bff;
   }
 
+  .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+
+  .card {
+    width: 18rem; /* Adjust the width as needed */
+    margin-bottom: 20px;
+  }
+
+  .about-content {
+    padding: 20px;
+  }
+
+  .about-content h3 {
+    color: #007bff;
+  }
+
   .image-left-text-right {
     display: flex;
     flex-direction: row;
@@ -79,6 +99,54 @@
       </div>
     </div>
   </div>
+
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="about-card">
+        <div class="about-content">
+          <h3>Technologies We Use</h3>
+
+          <div class="card-deck">
+            <!-- Card 1 -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Programming Languages</h5>
+                <p class="card-text">Python, JavaScript, HTML, CSS</p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Frameworks</h5>
+                <p class="card-text">Django, Bootstrap</p>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Tools</h5>
+                <p class="card-text">Git, VS Code</p>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Database</h5>
+                <p class="card-text">--</p>
+              </div>
+            </div>
+
+            <!-- Add more cards as needed -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </div>
 
 {% endblock body %}
