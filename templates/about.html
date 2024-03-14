@@ -1,226 +1,85 @@
-{% extends "base.html" %}
-{% block title %}About Us - Q-Safe{% endblock %}
-{% block body %}
-{% load static %}
+<h1 class="text-center mt-5">About Us</h1>
+<p style="font-size: 30px; margin-top: 100px; margin-left: 30px;">Meet the Creators-</p>
+<br></br>
+<br></br>
+<div class="" style="display: flex; margin-left: 1%;">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creators Page</title>
+    <style>
+        .creators-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            margin-left: 150px;
+        }
 
-<style>
-    .service-card {
-    background-color: #f8f9fa;
-    border-radius: 15px;
-    overflow: hidden;
-    margin-bottom: 20px;
-  }
+        .creator-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+        }
 
-  .service-card img {
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid #dee2e6;
-  }
+        .creator-card img {
+            width: 100px;
+            border-radius: 50%;
+        }
 
-  .service-content {
-    padding: 20px;
-  }
-
-  .service-content h3 {
-    color: #007bff;
-  }
-
-   .footer {
-    background-color: #006ee4; /* Adjust the background color as needed */
-    color: #007bff; /* Text color for the footer, matching the website text color */
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  .footer a {
-    color: #007bff; /* Link color in the footer, matching the website text color */
-  }
-
-  .footer a:hover {
-    color: #212529; /* Hover color for links, adjust as needed */
-  }
-
-  .footer h2 {
-    color: #007bff; /* Heading color in the footer, matching the website text color */
-  }
-
-  .about-card {
-    background-color: #f8f9fa;
-    border-radius: 15px;
-    overflow: hidden;
-    margin-bottom: 20px;
-  }
-
-  .about-card img {
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid #dee2e6;
-  }
-
-  .about-content {
-    padding: 20px;
-  }
-
-  .about-content h3 {
-    color: #007bff;
-  }
-
-  .card-deck {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 20px;
-  }
-
-  .card {
-    width: 18rem; /* Adjust the width as needed */
-    margin-bottom: 20px;
-  }
-
-  .about-content {
-    padding: 20px;
-  }
-
-  .about-content h3 {
-    color: #007bff;
-  }
-
-  .image-left-text-right {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .image-left-text-right .about-content {
-    order: 2; 
-  }
-
-  .image-left-text-right img {
-    order: 1; 
-  }
-</style>
-
-<div class="container mt-5">
-  <div class="row mb-4">
-    <div class="col-md-12 text-center">
-      <h2 class="display-4">About Us</h2>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="about-card">
-        <img src="{% static '/Assets/Img1.jpg' %}" alt="Image 1">
-        <div class="about-content">
-          <h3>Our Story</h3>
-          <p class="lead">Q-Safe was founded in 2020 with a vision to provide innovative solutions in the field of digital security. Our journey started with a small team of passionate individuals dedicated to ensuring the privacy and security of our users.</p>
-        </div>
-      </div>
+        .creator-name {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="creators-container" id="creatorsContainer">
+        <!-- Creators will be dynamically added here -->
     </div>
 
-    <div class="col-md-6">
-      <div class="about-card">
-        <img src="{% static '/Assets/img2.jpg' %}" alt="Image 2">
-        <div class="about-content">
-          <h3>Our Mission</h3>
-          <p class="lead">At Q-Safe, our mission is to empower individuals and businesses to protect their digital assets. We strive to develop cutting-edge steganography tools that make secure communication and data protection accessible to everyone.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+    <script>
+        const creators = [
+            { name: 'Sarvagya', image: 'creator1.jpg', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+            { name: 'Sneha', image: 'creator2.jpg', bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.pookie,dookie,wookie' },
+            { name: 'Somesh', image: 'creator3.jpg', bio: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' },
+            { name: 'Jyotsna',image:'creator4.jpg',bio:'loUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi'},
+            { name:'Stuti',image: 'creator5.jps',bio:'unga bunga chunga dunga kunga'}
+            // Add more creators as needed
+        ];
 
-  <div class="row mt-4">
-    <div class="col-md-12">
-      <div class="about-card image-left-text-right">
-        <img src="{% static '/Assets/logo.jpg' %}" alt="Image 3" style="height: 50%; width: 100%;">
-        <div class="about-content">
-          <h3>Our Team</h3>
-          <p class="lead">Meet the passionate individuals behind Q-Safe. Our diverse team brings together expertise in cybersecurity, software development, and user experience design. Together, we work towards creating a safer digital environment for all.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+        const creatorsContainer = document.getElementById('creatorsContainer');
 
-  <div class="row mt-4">
-    <div class="col-md-12">
-      <div class="about-card">
-        <div class="about-content">
-          <h3>Technologies We Use</h3>
+        creators.forEach(creator => {
+            const card = document.createElement('div');
+            card.classList.add('creator-card');
 
-          <div class="card-deck">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Programming Languages</h5>
-                <p class="card-text">Python, JavaScript, HTML, CSS</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Frameworks</h5>
-                <p class="card-text">Django, Bootstrap</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Tools</h5>
-                <p class="card-text">Git, VS Code</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Database</h5>
-                <p class="card-text">--</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            const image = document.createElement('img');
+            image.src = creator.image;
+            image.alt = creator.name;
 
-  <div class="row">
-    <!-- Service 1 -->
-    <div class="col-md-4">
-      <div class="service-card">
-        <img src="{% static '/Assets/service1.jpg' %}" alt="Service 1">
-        <div class="service-content">
-          <h3>Hide QR Code in Image</h3>
-          <p class="lead">Our experts use advanced steganography techniques to hide QR codes within images, ensuring secure and discreet information sharing.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="service-card">
-        <img src="{% static '/Assets/service2.jpg' %}" alt="Service 2">
-        <div class="service-content">
-          <h3>Convert Text to QR Code</h3>
-          <p class="lead">Transform your textual information into QR codes, making it easy to share and scan for quick access to details.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="service-card">
-        <img src="{% static '/Assets/service3.jpg' %}" alt="Service 3">
-        <div class="service-content">
-          <h3>Decrypt Hidden QR Information</h3>
-          <p class="lead">Utilize our decryption services to reveal information hidden within QR codes, ensuring secure and reliable data retrieval.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr style="margin-top: 30px; margin-bottom: 30px; border-color: #343a40;">
-  <footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center mb-4">
-          <a class="navbar-brand" href="#">
-            <img src="{% static '/Assets/logo.jpg' %}" alt="Company Logo" width="100" height="100">
-          </a>
-          <p class="mt-3">© 2024 Q-Safe. All rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+            const name = document.createElement('div');
+            name.classList.add('creator-name');
+            name.textContent = creator.name;
+
+            const bio = document.createElement('div');
+            bio.textContent = creator.bio;
+
+            card.appendChild(image);
+            card.appendChild(name);
+            card.appendChild(bio);
+
+            creatorsContainer.appendChild(card);
+        });
+    </script>
+    
+</body>
+</html>
 
 </div>
-
-{% endblock body %}
