@@ -24,7 +24,7 @@ admin.site.index_title = "Welcome to admin portal" # this is welcome sort of mes
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Playground.urls')),
-    path('Playground/', include('Playground.urls'))
+    path('Playground/', include('Playground.urls')),
     # we give the url and then the include goes to the playground folder for the app so we no longer require the playground/hello in urls.py in playground
     # U can also give playground or u can include everything
 ]

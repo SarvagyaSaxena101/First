@@ -1,2 +1,16 @@
 {% extends "base.html" %}
-{% block body %}This is the service page{% endblock body %}This is the service page
+{% block title %}Upload File and Generate QR Code{% endblock %}
+{% block body %}
+<div class="container">
+    <h2>Upload File and Generate QR Code</h2>
+    <form method="post" enctype="multipart/form-data" action="{% url 'generate_qr' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Generate QR Code</button>
+    </form>
+    {% if qr_code_url %}
+    <h2>Steganographed QR Code Generated</h2>
+    <img src="{{ qr_code_url }}" alt="Steganographed QR Code">
+    {% endif %}
+</div>
+{% endblock body %}
