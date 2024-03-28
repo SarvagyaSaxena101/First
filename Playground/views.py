@@ -4,6 +4,8 @@ from .forms import FileUploadForm
 import qrcode
 from django.core.files.storage import default_storage
 from stegano import lsb
+from django.conf import settings
+import os
 
 
 def index(request):
@@ -15,8 +17,11 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-def services(request):
-    return render(request, 'services.html')
+def service1(request):
+    return render(request, 'service1.html')
+
+def service2(request):
+    return render(request, 'service2.html')
 
 def contact(request):
     return render(request, 'contact.html')
@@ -39,22 +44,53 @@ def generate_qr(request):
     if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            file = request.FILES['file']
-            # Read file content
-            content = file.read().decode('utf-8')  # Decode bytes to string
+            # Get the uploaded image file
+            uploaded_image = request.FILES['image']
 
             # Generate QR code for the entire content
-            qr = qrcode.make(content)
+            qr_content = "Your QR code content here"  # Replace with your actual content
+            qr = qrcode.make(qr_content)
 
-            # Save the QR code image temporarily
-            with default_storage.open('temp_qr.png', 'wb') as f:
+            # Define the file path to save the QR code image
+            qr_file_path = os.path.join(settings.BASE_DIR, 'static/Assets', 'temp_qr.png')
+
+            # Save the QR code image
+            with open(qr_file_path, 'wb') as f:
                 qr.save(f)
 
-            # Get the URL of the generated QR code image
-            qr_code_url = default_storage.url('temp_qr.png')
+            # Get the uploaded image file path
+            uploaded_image_path = os.path.join(settings.BASE_DIR, 'static/Assets', uploaded_image.name)
 
-            # Render the template with the QR code image URL
-            return render(request, 'qr_code_single.html', {'qr_code_url': qr_code_url})
+            # Save the uploaded image file
+            with open(uploaded_image_path, 'wb') as f:
+                for chunk in uploaded_image.chunks():
+                    f.write(chunk)
+
+            # Embed the QR code image into the uploaded image
+            secret_image = lsb.hide(uploaded_image_path, qr_file_path)
+
+            # Define the file path to save the combined image
+            combined_image_path = os.path.join(settings.BASE_DIR, 'static/Assets', 'combined_image.png')
+
+            # Save the combined image
+            secret_image.save(combined_image_path)
+
+            # Get the URL of the combined image and QR code
+            combined_image_url = '/static/Assets/combined_image.png'  # Adjust as needed based on your URL configuration
+            qr_code_url = '/static/Assets/temp_qr.png'
+
+            # Render the template with the combined image and QR code URLs
+            return render(request, 'qr_code_single.html', {'combined_image_url': combined_image_url, 'qr_code_url': qr_code_url})
     else:
         form = FileUploadForm()
-    return render(request, 'file_upload_form.html', {'form': form})  
+    return render(request, 'file_upload_form.html', {'form': form})
+
+
+def try_decode(file, encodings=['utf-8', 'latin-1', 'iso-8859-1']):
+    for encoding in encodings:
+        try:
+            return file.read().decode(encoding)
+        except UnicodeDecodeError:
+            pass
+    # If no encoding works, return empty string
+    return ''
